@@ -12,10 +12,10 @@ app.use(morgan('combined'));
 
 app.get('/', (req, res) => res.send('Hello World SSitesAPI'));
 
-app.get('/accounts/:id', (req, res, next) => {
+app.get('/sites/:id', (req, res, next) => {
   return db
     .select('name')
-    .from('accounts')
+    .from('sites')
     .where({ id: req.params.id })
     .first()
     .then(account => {

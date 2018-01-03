@@ -1,10 +1,10 @@
 // Update with your config settings.
 const {
-  POSTGRES_DB: database,
-  POSTGRES_USER: user,
-  POSTGRES_PASSWORD: password,
-  POSTGRES_PORT: port,
-  POSTGRES_HOST: host,
+  POSTGRES_DB: database = 'sites',
+  POSTGRES_USER: user = 'root',
+  POSTGRES_PASSWORD: password = 'password',
+  POSTGRES_PORT: port = '8001',
+  POSTGRES_HOST: host = 'localhost',
 } = process.env;
 
 module.exports = {
