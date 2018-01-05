@@ -1,8 +1,15 @@
+# Docker Compose is a tool that is used for defining and running mulit-container applications
+# docker-compose is a config file that brings up an application and all of the services (pieces of the app) it depends on with one command.
+
 version: '3'
 services:
+# A service definition contains configuration which will be applied to each container started for that service, much like passing command-line parameters to docker run. Likewise, network and volume definitions are analogous to docker network create and docker volume create.
   db:
     image: postgres:9.6.3-alpine
+    # the image to start the contianer from
     environment:
+    # Environment variables with only a key are resolved to their values on the machine Compose is running on, which can be helpful for secret or host-specific values.
+    # Note: If your service specifies a build option, variables defined in environment will not be automatically visible during the build. Use the args sub-option of build to define build-time environment variables.
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
       POSTGRES_DB: sites
@@ -18,7 +25,10 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: sites  
     build:
+    # configuration options that are applied at build time
       context: .
+      # Either a path to a directory containing a Dockerfile, or a url to a git repository. This directory is also the build context that is sent to the Docker daemon. Compose will build and tag it with a generated name, and use that image thereafter.
+      
     ports:
       - "8000:8000"
     volumes:
@@ -31,3 +41,4 @@ services:
       # - ./scripts:/usr/app/scripts
       # - ./buildInfo.json:/usr/app/buildInfo.json
     command: yarn start
+    # overrides the defualt command

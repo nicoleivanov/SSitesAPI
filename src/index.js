@@ -18,9 +18,9 @@ app.get('/sites/:id', (req, res, next) => {
     .from('sites')
     .where({ id: req.params.id })
     .first()
-    .then(account => {
-      const { name } = account;
-      res.send(account.name);
+    .then(site => {
+      const { name } = site;
+      res.send(site.name);
     });
 });
 
